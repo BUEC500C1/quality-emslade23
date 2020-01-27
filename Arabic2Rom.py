@@ -1,11 +1,11 @@
 
 
 def arabicToRoman(input):
-    if int(input) > 4999:
-        print("Too big a number for the Romans")
-        return ''
     if type(input) != int:
         print("Invalid number, input a positive integer.")
+        return ''
+    if int(input) > 4999:
+        print("Too big a number for the Romans")
         return ''
 
     str_input = str(input)
