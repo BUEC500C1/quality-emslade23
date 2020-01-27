@@ -1,10 +1,10 @@
-# Continuous-Integration
+# Homework 1: Continuous Integration
 Objective of this exercise is to learn continuous build process (CB) and continuous integration (CI). 
 You are expected to: 
 
-- Write python program to convert Arabic Numerals to Roman Numerals 
+- Write python program to convert Arabic Numerals to Roman Numerals :heavy_check_mark:
 - Integrate Continuous Build Process to check if your software in each development stage passed the build process. 
-- Integrate unit test and run the unit test in continuous integration process.
+- Integrate unit test and run the unit test in continuous integration process. 
 
 For more informaiton, please check the assignment presentation.
 
