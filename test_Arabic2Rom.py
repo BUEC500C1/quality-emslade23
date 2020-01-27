@@ -32,4 +32,3 @@ def testDecimalNumber():
 
 def testNumberandString():
     assert arabicToRoman('aloha345hi') == ''
-
