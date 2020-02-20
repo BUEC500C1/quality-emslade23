@@ -1,61 +1,28 @@
+# References: https://www.geeksforgeeks.org/converting-arabicArray-number-lying-between-1-to-3999-to-roman-numerals/
 
 
-def arabicToRoman(input):
-    if type(input) != int:
-        print("Invalid number, input a positive integer.")
+arabicArray = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000]
+romanNumeralArray = ["I", "IV", "V", "IX", "X", "XL","L", "XC", "C", "CD", "D", "CM", "M"]
+
+def arabicToRoman(userInput):
+    if type(userInput) != int:
+        print("Invalid number, userInput a positive integer.")
         return ''
-    if int(input) > 4999:
-        print("Too big a number for the Romans")
+    if int(userInput) > 4999:
+        print("Too big a number for the romanNumeralArray")
         return ''
 
-    str_input = str(input)
-    return _arabicToRoman(str_input, len(str_input))
 
+    romanNumberResult = ''
+    index = len(arabicArray) - 1
 
-def _arabicToRoman(input, length):
-    if length == 0:
-        return ''
-    if length == 1:
-        if input[0] == '9':
-            return 'IX'
-        elif input[0] >= '5':
-            return 'V' + ('I'*(int(input[0])-5))
-        elif input[0] == '4':
-            return 'I' + 'V'
-        elif input[0] > '0':
-            return 'I'*int(input[0])
-        else:
-            return _arabicToRoman(input[1:], length-1)
-    elif length == 4 and input[0]:
-        return 'M' * int(input[0]) + _arabicToRoman(input[1:], length-1)
-    elif length == 3:
-        if input[0] == '9':
-            return 'CM' + _arabicToRoman(input[1:], length-1)
-        elif input[0] >= '5':
-            correctInput = int(input[0])-5
-            recursiveCall = _arabicToRoman(input[1:], length-1)
-            return 'D' + ('C' * correctInput) + recursiveCall
-        elif input[0] == '4':
-            return 'C' + 'D' + _arabicToRoman(input[1:], length-1)
-        elif input[0] > '0':
-            return 'C'*int(input[0]) + _arabicToRoman(input[1:], length-1)
-        else:
-            return _arabicToRoman(input[1:], length-1)
-    elif length == 2:
-        if input[0] == '9':
-            return 'XC' + _arabicToRoman(input[1:], length-1)
-        elif input[0] >= '5':
-            correctInput = int(input[0])-5
-            recursiveCall = _arabicToRoman(input[1:], length-1)
-            return 'L' + ('X' * correctInput) + recursiveCall
-        elif input[0] == '4':
-            return 'X' + 'L' + _arabicToRoman(input[1:], length-1)
-        elif input[0] > '0':
-            return 'X'*int(input[0]) + _arabicToRoman(input[1:], length-1)
-        else:
-            return _arabicToRoman(input[1:], length-1)
-    else:
-        return 'Sorry, try again!'
-
-
-print(arabicToRoman(4999))
+    while userInput:
+        temp = int(userInput / arabicArray[index])
+        userInput = userInput % arabicArray[index]
+        
+        while temp:
+            temp = temp - 1
+            romanNumberResult = romanNumberResult + romanNumeralArray[index]
+        
+        index = index - 1
+    return romanNumberResult
